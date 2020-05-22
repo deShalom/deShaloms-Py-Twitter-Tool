@@ -31,7 +31,7 @@ class StartPage(tk.Frame):
         buttonFrame.place(relwidth=1, relheight=0.2, relx=0.0, rely=0.1)
         # - Adding buttons to the menu bar.
         tk.Button(buttonFrame, bg="#7651b5", borderwidth=0, text="Settings", command=lambda: master.switch_frame(PageOne)).place(relx=0.5, rely=0.75, anchor=CENTER)
-        tk.Button(buttonFrame, bg="#7651b5", borderwidth=0, text="Home", command=lambda: master.switch_frame(PageOne)).place(relx=0.35, rely=0.75, anchor=CENTER)
+        tk.Button(buttonFrame, bg="#7651b5", borderwidth=0, text="Home", command=lambda: master.switch_frame(StartPage)).place(relx=0.35, rely=0.75, anchor=CENTER)
         tk.Button(buttonFrame, bg="#7651b5", borderwidth=0, text="Keys", command=lambda: master.switch_frame(PageOne)).place(relx=0.65, rely=0.75, anchor=CENTER)
         # - Creating and saving refence to the logo.
         img = ImageTk.PhotoImage(Image.open(path))
@@ -51,10 +51,44 @@ class StartPage(tk.Frame):
 class PageOne(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        tk.Frame.configure(self,bg='blue')
-        tk.Label(self, text="Page one", font=('Helvetica', 18, "bold")).pack(side="top", fill="x", pady=5)
-        tk.Button(self, text="Go back to start page",
-                  command=lambda: master.switch_frame(StartPage)).pack()
+        # - Creating background.
+        canvas = tk.Canvas(self, height=300, width=400, bg="#8ca0de", highlightthickness=0)
+        canvas.pack()
+        # - Implementing the menu bar.
+        buttonFrame = tk.Frame(canvas, bg="#7651b5")
+        buttonFrame.place(relwidth=1, relheight=0.2, relx=0.0, rely=0.1)
+        # - Adding buttons to the menu bar.
+        tk.Button(buttonFrame, bg="#7651b5", borderwidth=0, text="Settings", command=lambda: master.switch_frame(PageOne)).place(relx=0.5, rely=0.75, anchor=CENTER)
+        tk.Button(buttonFrame, bg="#7651b5", borderwidth=0, text="Home", command=lambda: master.switch_frame(StartPage)).place(relx=0.35, rely=0.75, anchor=CENTER)
+        tk.Button(buttonFrame, bg="#7651b5", borderwidth=0, text="Keys", command=lambda: master.switch_frame(PageOne)).place(relx=0.65, rely=0.75, anchor=CENTER)
+        # - Creating and saving refence to the logo.
+        img = ImageTk.PhotoImage(Image.open(path))
+        self.photo = img
+        # - Creating the light shaded blue panel.
+        frame = tk.Frame(self, bg="#7081b5")
+        # - Implementing the image.
+        panel = Label(frame, image = self.photo, bg="#7081b5")
+        panel.place(relwidth=0.2, relheight=1, relx=0.5, rely=0.5, anchor=CENTER)
+        frame.place(relwidth=1, relheight=0.2)
+        # - Adding the input fields and button.
+        # - E1.
+        e1 = tk.Entry(canvas)
+        e1.place(relx=0.5, rely=0.4, anchor=CENTER)
+        e1.insert(0, 'e1')
+        # - E2.
+        e2 = tk.Entry(canvas)
+        e2.place(relx=0.5, rely=0.5, anchor=CENTER)
+        e2.insert(0, 'e2')
+        # - E3.
+        e3 = tk.Entry(canvas)
+        e3.place(relx=0.5, rely=0.6, anchor=CENTER)
+        e3.insert(0, 'e3')
+        # - E4.
+        e4 = tk.Entry(canvas)
+        e4.place(relx=0.5, rely=0.7, anchor=CENTER)
+        e4.insert(0, 'e4')
+        # - Update keys button
+        tk.Button(canvas, bg="#7651b5", borderwidth=1, text="Update keys", command=lambda:tweet(e1.get())).place(relx=0.5, rely=0.8, anchor=CENTER)
 
 class PageTwo(tk.Frame):
     def __init__(self, master):
