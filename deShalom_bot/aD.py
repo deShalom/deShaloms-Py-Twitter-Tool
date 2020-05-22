@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 from PIL import ImageTk, Image
 from module1 import tweet
+from module1 import saveKeys
 import time
 import schedule
 
@@ -88,7 +89,7 @@ class PageOne(tk.Frame):
         e4.place(relx=0.5, rely=0.7, anchor=CENTER)
         e4.insert(0, 'e4')
         # - Update keys button
-        tk.Button(canvas, bg="#7651b5", borderwidth=1, text="Update keys", command=lambda:tweet(e1.get())).place(relx=0.5, rely=0.8, anchor=CENTER)
+        tk.Button(canvas, bg="#7651b5", borderwidth=1, text="Update keys", command=lambda:saveKeys(e1.get(), e2.get(), e3.get(), e4.get())).place(relx=0.5, rely=0.8, anchor=CENTER)
 
 class PageTwo(tk.Frame):
     def __init__(self, master):

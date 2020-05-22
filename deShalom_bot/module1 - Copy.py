@@ -36,13 +36,6 @@ def saveKeys(key1, key2, key3, key4):
 
 #--- Update keys function
 def updateKeys():
-    global CONSUMER_KEY
-    global CONSUMER_SECRET
-    global ACCESS_KEY
-    global ACCESS_SECRET
-    global auth
-    global api
-
     CONSUMER_KEY = keys[0]
     CONSUMER_SECRET = keys[1]
     ACCESS_KEY = keys[2]
@@ -50,6 +43,7 @@ def updateKeys():
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
     api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
+
 
 if __name__ == "__main__":
     while True:
